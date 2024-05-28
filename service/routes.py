@@ -63,14 +63,12 @@ def create_accounts():
 
 # ... place you code here to LIST accounts ...
 
+
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     accounts = Account.all()
     account_list = [account.serialize() for account in accounts]
-
-    
     return jsonify(account_list), status.HTTP_200_OK
-
 
 
 ######################################################################
@@ -83,10 +81,8 @@ def read_account(id):
     account = Account.find(id)
     if not account:
         abort(status.HTTP_404_NOT_FOUND)
-    
+
     return account.serialize(), status.HTTP_200_OK
-
-
 
 
 ######################################################################
